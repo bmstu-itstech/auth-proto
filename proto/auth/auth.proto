@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package auth.v1;
+package auth.v2;
 
-option go_package = "itstech/auth/v1;authv1";
+option go_package = "itstech/auth/v2;authv2";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
