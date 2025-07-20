@@ -19,9 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName    = "/auth.v1.Auth/Register"
-	Auth_Login_FullMethodName       = "/auth.v1.Auth/Login"
-	Auth_GetUserData_FullMethodName = "/auth.v1.Auth/GetUserData"
+	Auth_Register_FullMethodName           = "/auth.v1.Auth/Register"
+	Auth_Login_FullMethodName              = "/auth.v1.Auth/Login"
+	Auth_GetUserData_FullMethodName        = "/auth.v1.Auth/GetUserData"
+	Auth_ChangeUserPassword_FullMethodName = "/auth.v1.Auth/ChangeUserPassword"
+	Auth_ChangeUserLogin_FullMethodName    = "/auth.v1.Auth/ChangeUserLogin"
+	Auth_ChangeUserEmail_FullMethodName    = "/auth.v1.Auth/ChangeUserEmail"
 )
 
 // AuthClient is the client API for Auth service.
@@ -31,6 +34,9 @@ type AuthClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	GetUserData(ctx context.Context, in *GetUserDataRequest, opts ...grpc.CallOption) (*GetUserDataResponse, error)
+	ChangeUserPassword(ctx context.Context, in *ChangeUserPasswordRequest, opts ...grpc.CallOption) (*ChangeUserPasswordResponse, error)
+	ChangeUserLogin(ctx context.Context, in *ChangeUserLoginRequest, opts ...grpc.CallOption) (*ChangeUserLoginResponse, error)
+	ChangeUserEmail(ctx context.Context, in *ChangeUserEmailRequest, opts ...grpc.CallOption) (*ChangeUserEmailResponse, error)
 }
 
 type authClient struct {
@@ -71,6 +77,36 @@ func (c *authClient) GetUserData(ctx context.Context, in *GetUserDataRequest, op
 	return out, nil
 }
 
+func (c *authClient) ChangeUserPassword(ctx context.Context, in *ChangeUserPasswordRequest, opts ...grpc.CallOption) (*ChangeUserPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserPasswordResponse)
+	err := c.cc.Invoke(ctx, Auth_ChangeUserPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) ChangeUserLogin(ctx context.Context, in *ChangeUserLoginRequest, opts ...grpc.CallOption) (*ChangeUserLoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserLoginResponse)
+	err := c.cc.Invoke(ctx, Auth_ChangeUserLogin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) ChangeUserEmail(ctx context.Context, in *ChangeUserEmailRequest, opts ...grpc.CallOption) (*ChangeUserEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserEmailResponse)
+	err := c.cc.Invoke(ctx, Auth_ChangeUserEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
@@ -78,6 +114,9 @@ type AuthServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	GetUserData(context.Context, *GetUserDataRequest) (*GetUserDataResponse, error)
+	ChangeUserPassword(context.Context, *ChangeUserPasswordRequest) (*ChangeUserPasswordResponse, error)
+	ChangeUserLogin(context.Context, *ChangeUserLoginRequest) (*ChangeUserLoginResponse, error)
+	ChangeUserEmail(context.Context, *ChangeUserEmailRequest) (*ChangeUserEmailResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -96,6 +135,15 @@ func (UnimplementedAuthServer) Login(context.Context, *LoginRequest) (*LoginResp
 }
 func (UnimplementedAuthServer) GetUserData(context.Context, *GetUserDataRequest) (*GetUserDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserData not implemented")
+}
+func (UnimplementedAuthServer) ChangeUserPassword(context.Context, *ChangeUserPasswordRequest) (*ChangeUserPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserPassword not implemented")
+}
+func (UnimplementedAuthServer) ChangeUserLogin(context.Context, *ChangeUserLoginRequest) (*ChangeUserLoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserLogin not implemented")
+}
+func (UnimplementedAuthServer) ChangeUserEmail(context.Context, *ChangeUserEmailRequest) (*ChangeUserEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserEmail not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -172,6 +220,60 @@ func _Auth_GetUserData_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_ChangeUserPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ChangeUserPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ChangeUserPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ChangeUserPassword(ctx, req.(*ChangeUserPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_ChangeUserLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserLoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ChangeUserLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ChangeUserLogin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ChangeUserLogin(ctx, req.(*ChangeUserLoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_ChangeUserEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ChangeUserEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ChangeUserEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ChangeUserEmail(ctx, req.(*ChangeUserEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +292,18 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserData",
 			Handler:    _Auth_GetUserData_Handler,
+		},
+		{
+			MethodName: "ChangeUserPassword",
+			Handler:    _Auth_ChangeUserPassword_Handler,
+		},
+		{
+			MethodName: "ChangeUserLogin",
+			Handler:    _Auth_ChangeUserLogin_Handler,
+		},
+		{
+			MethodName: "ChangeUserEmail",
+			Handler:    _Auth_ChangeUserEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

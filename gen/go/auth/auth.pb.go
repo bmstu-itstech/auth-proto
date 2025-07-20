@@ -381,6 +381,422 @@ func (x *GetUserDataResponse) GetPatronymic() string {
 	return ""
 }
 
+type ChangeUserPasswordRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserPasswordRequest) Reset() {
+	*x = ChangeUserPasswordRequest{}
+	mi := &file_auth_auth_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserPasswordRequest) ProtoMessage() {}
+
+func (x *ChangeUserPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserPasswordRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ChangeUserPasswordRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ChangeUserPasswordRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *ChangeUserPasswordRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
+}
+
+type ChangeUserPasswordResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserPasswordResponse) Reset() {
+	*x = ChangeUserPasswordResponse{}
+	mi := &file_auth_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserPasswordResponse) ProtoMessage() {}
+
+func (x *ChangeUserPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserPasswordResponse.ProtoReflect.Descriptor instead.
+func (*ChangeUserPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ChangeUserPasswordResponse) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+type ChangeUserLoginRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserLoginRequest) Reset() {
+	*x = ChangeUserLoginRequest{}
+	mi := &file_auth_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserLoginRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserLoginRequest) ProtoMessage() {}
+
+func (x *ChangeUserLoginRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserLoginRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserLoginRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ChangeUserLoginRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ChangeUserLoginRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *ChangeUserLoginRequest) GetNewLogin() string {
+	if x != nil {
+		return x.NewLogin
+	}
+	return ""
+}
+
+type ChangeUserLoginResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserLoginResponse) Reset() {
+	*x = ChangeUserLoginResponse{}
+	mi := &file_auth_auth_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserLoginResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserLoginResponse) ProtoMessage() {}
+
+func (x *ChangeUserLoginResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserLoginResponse.ProtoReflect.Descriptor instead.
+func (*ChangeUserLoginResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ChangeUserLoginResponse) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+type ChangeUserEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserEmailRequest) Reset() {
+	*x = ChangeUserEmailRequest{}
+	mi := &file_auth_auth_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserEmailRequest) ProtoMessage() {}
+
+func (x *ChangeUserEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserEmailRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserEmailRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ChangeUserEmailRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ChangeUserEmailRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *ChangeUserEmailRequest) GetNewLogin() string {
+	if x != nil {
+		return x.NewLogin
+	}
+	return ""
+}
+
+type ChangeUserEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserEmailResponse) Reset() {
+	*x = ChangeUserEmailResponse{}
+	mi := &file_auth_auth_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserEmailResponse) ProtoMessage() {}
+
+func (x *ChangeUserEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserEmailResponse.ProtoReflect.Descriptor instead.
+func (*ChangeUserEmailResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ChangeUserEmailResponse) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+type ChangeUserNSPRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserNSPRequest) Reset() {
+	*x = ChangeUserNSPRequest{}
+	mi := &file_auth_auth_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserNSPRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserNSPRequest) ProtoMessage() {}
+
+func (x *ChangeUserNSPRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserNSPRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserNSPRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ChangeUserNSPRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ChangeUserNSPRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *ChangeUserNSPRequest) GetNewLogin() string {
+	if x != nil {
+		return x.NewLogin
+	}
+	return ""
+}
+
+type ChangeUserNSPResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserNSPResponse) Reset() {
+	*x = ChangeUserNSPResponse{}
+	mi := &file_auth_auth_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserNSPResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserNSPResponse) ProtoMessage() {}
+
+func (x *ChangeUserNSPResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserNSPResponse.ProtoReflect.Descriptor instead.
+func (*ChangeUserNSPResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ChangeUserNSPResponse) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
@@ -413,11 +829,38 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\asurname\x18\x05 \x01(\tR\asurname\x12\x1e\n" +
 	"\n" +
 	"patronymic\x18\x06 \x01(\tR\n" +
-	"patronymic2\xc9\x01\n" +
+	"patronymic\"p\n" +
+	"\x19ChangeUserPasswordRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12!\n" +
+	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\"9\n" +
+	"\x1aChangeUserPasswordResponse\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"g\n" +
+	"\x16ChangeUserLoginRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
+	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"6\n" +
+	"\x17ChangeUserLoginResponse\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"g\n" +
+	"\x16ChangeUserEmailRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
+	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"6\n" +
+	"\x17ChangeUserEmailResponse\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"e\n" +
+	"\x14ChangeUserNSPRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
+	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"4\n" +
+	"\x15ChangeUserNSPResponse\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken2\xd4\x03\n" +
 	"\x04Auth\x12?\n" +
 	"\bRegister\x12\x18.auth.v1.RegisterRequest\x1a\x19.auth.v1.RegisterResponse\x126\n" +
 	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x16.auth.v1.LoginResponse\x12H\n" +
-	"\vGetUserData\x12\x1b.auth.v1.GetUserDataRequest\x1a\x1c.auth.v1.GetUserDataResponseB\x18Z\x16itstech/auth/v1;authv1b\x06proto3"
+	"\vGetUserData\x12\x1b.auth.v1.GetUserDataRequest\x1a\x1c.auth.v1.GetUserDataResponse\x12]\n" +
+	"\x12ChangeUserPassword\x12\".auth.v1.ChangeUserPasswordRequest\x1a#.auth.v1.ChangeUserPasswordResponse\x12T\n" +
+	"\x0fChangeUserLogin\x12\x1f.auth.v1.ChangeUserLoginRequest\x1a .auth.v1.ChangeUserLoginResponse\x12T\n" +
+	"\x0fChangeUserEmail\x12\x1f.auth.v1.ChangeUserEmailRequest\x1a .auth.v1.ChangeUserEmailResponseB\x18Z\x16itstech/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -431,27 +874,41 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_auth_auth_proto_goTypes = []any{
-	(*RegisterRequest)(nil),     // 0: auth.v1.RegisterRequest
-	(*RegisterResponse)(nil),    // 1: auth.v1.RegisterResponse
-	(*LoginRequest)(nil),        // 2: auth.v1.LoginRequest
-	(*LoginResponse)(nil),       // 3: auth.v1.LoginResponse
-	(*GetUserDataRequest)(nil),  // 4: auth.v1.GetUserDataRequest
-	(*GetUserDataResponse)(nil), // 5: auth.v1.GetUserDataResponse
+	(*RegisterRequest)(nil),            // 0: auth.v1.RegisterRequest
+	(*RegisterResponse)(nil),           // 1: auth.v1.RegisterResponse
+	(*LoginRequest)(nil),               // 2: auth.v1.LoginRequest
+	(*LoginResponse)(nil),              // 3: auth.v1.LoginResponse
+	(*GetUserDataRequest)(nil),         // 4: auth.v1.GetUserDataRequest
+	(*GetUserDataResponse)(nil),        // 5: auth.v1.GetUserDataResponse
+	(*ChangeUserPasswordRequest)(nil),  // 6: auth.v1.ChangeUserPasswordRequest
+	(*ChangeUserPasswordResponse)(nil), // 7: auth.v1.ChangeUserPasswordResponse
+	(*ChangeUserLoginRequest)(nil),     // 8: auth.v1.ChangeUserLoginRequest
+	(*ChangeUserLoginResponse)(nil),    // 9: auth.v1.ChangeUserLoginResponse
+	(*ChangeUserEmailRequest)(nil),     // 10: auth.v1.ChangeUserEmailRequest
+	(*ChangeUserEmailResponse)(nil),    // 11: auth.v1.ChangeUserEmailResponse
+	(*ChangeUserNSPRequest)(nil),       // 12: auth.v1.ChangeUserNSPRequest
+	(*ChangeUserNSPResponse)(nil),      // 13: auth.v1.ChangeUserNSPResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.Auth.Register:input_type -> auth.v1.RegisterRequest
-	2, // 1: auth.v1.Auth.Login:input_type -> auth.v1.LoginRequest
-	4, // 2: auth.v1.Auth.GetUserData:input_type -> auth.v1.GetUserDataRequest
-	1, // 3: auth.v1.Auth.Register:output_type -> auth.v1.RegisterResponse
-	3, // 4: auth.v1.Auth.Login:output_type -> auth.v1.LoginResponse
-	5, // 5: auth.v1.Auth.GetUserData:output_type -> auth.v1.GetUserDataResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: auth.v1.Auth.Register:input_type -> auth.v1.RegisterRequest
+	2,  // 1: auth.v1.Auth.Login:input_type -> auth.v1.LoginRequest
+	4,  // 2: auth.v1.Auth.GetUserData:input_type -> auth.v1.GetUserDataRequest
+	6,  // 3: auth.v1.Auth.ChangeUserPassword:input_type -> auth.v1.ChangeUserPasswordRequest
+	8,  // 4: auth.v1.Auth.ChangeUserLogin:input_type -> auth.v1.ChangeUserLoginRequest
+	10, // 5: auth.v1.Auth.ChangeUserEmail:input_type -> auth.v1.ChangeUserEmailRequest
+	1,  // 6: auth.v1.Auth.Register:output_type -> auth.v1.RegisterResponse
+	3,  // 7: auth.v1.Auth.Login:output_type -> auth.v1.LoginResponse
+	5,  // 8: auth.v1.Auth.GetUserData:output_type -> auth.v1.GetUserDataResponse
+	7,  // 9: auth.v1.Auth.ChangeUserPassword:output_type -> auth.v1.ChangeUserPasswordResponse
+	9,  // 10: auth.v1.Auth.ChangeUserLogin:output_type -> auth.v1.ChangeUserLoginResponse
+	11, // 11: auth.v1.Auth.ChangeUserEmail:output_type -> auth.v1.ChangeUserEmailResponse
+	6,  // [6:12] is the sub-list for method output_type
+	0,  // [0:6] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -465,7 +922,7 @@ func file_auth_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
