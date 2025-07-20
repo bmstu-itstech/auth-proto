@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: auth/auth.proto
 
-package authv1
+package authv2
 
 import (
 	context "context"
@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName           = "/auth.v1.Auth/Register"
-	Auth_Login_FullMethodName              = "/auth.v1.Auth/Login"
-	Auth_GetUserData_FullMethodName        = "/auth.v1.Auth/GetUserData"
-	Auth_ChangeUserPassword_FullMethodName = "/auth.v1.Auth/ChangeUserPassword"
-	Auth_ChangeUserLogin_FullMethodName    = "/auth.v1.Auth/ChangeUserLogin"
-	Auth_ChangeUserEmail_FullMethodName    = "/auth.v1.Auth/ChangeUserEmail"
+	Auth_Register_FullMethodName           = "/auth.v2.Auth/Register"
+	Auth_Login_FullMethodName              = "/auth.v2.Auth/Login"
+	Auth_GetUserData_FullMethodName        = "/auth.v2.Auth/GetUserData"
+	Auth_ChangeUserPassword_FullMethodName = "/auth.v2.Auth/ChangeUserPassword"
+	Auth_ChangeUserLogin_FullMethodName    = "/auth.v2.Auth/ChangeUserLogin"
+	Auth_ChangeUserEmail_FullMethodName    = "/auth.v2.Auth/ChangeUserEmail"
 )
 
 // AuthClient is the client API for Auth service.
@@ -278,7 +278,7 @@ func _Auth_ChangeUserEmail_Handler(srv interface{}, ctx context.Context, dec fun
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Auth_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.v1.Auth",
+	ServiceName: "auth.v2.Auth",
 	HandlerType: (*AuthServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
