@@ -8,6 +8,9 @@ service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc GetUserData (GetUserDataRequest) returns (GetUserDataResponse);
+  rpc ChangeUserPassword (ChangeUserPasswordRequest) returns (ChangeUserPasswordResponse);
+  rpc ChangeUserLogin (ChangeUserLoginRequest) returns (ChangeUserLoginResponse);
+  rpc ChangeUserEmail (ChangeUserEmailRequest) returns (ChangeUserEmailResponse);
 }
 
 message RegisterRequest {
@@ -44,4 +47,44 @@ message GetUserDataResponse {
   string name = 4;
   string surname = 5;
   string patronymic = 6;
+}
+
+message ChangeUserPasswordRequest {
+  string login = 1;
+  string password = 2;
+  string new_password = 3;
+}
+
+message ChangeUserPasswordResponse {
+  string jwt_token = 1;
+}
+
+message ChangeUserLoginRequest {
+  string login = 1;
+  string password = 2;
+  string new_login = 3;
+}
+
+message ChangeUserLoginResponse {
+  string jwt_token = 1;
+}
+
+message ChangeUserEmailRequest {
+  string login = 1;
+  string password = 2;
+  string new_login = 3;
+}
+
+message ChangeUserEmailResponse {
+  string jwt_token = 1;
+}
+
+message ChangeUserNSPRequest {
+  string login = 1;
+  string password = 2;
+  string new_login = 3;
+}
+
+message ChangeUserNSPResponse {
+  string jwt_token = 1;
 }
