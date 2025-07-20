@@ -108,6 +108,7 @@ func (x *RegisterRequest) GetPatronymic() string {
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -147,6 +148,13 @@ func (x *RegisterResponse) GetJwtToken() string {
 		return x.JwtToken
 	}
 	return ""
+}
+
+func (x *RegisterResponse) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
 }
 
 type LoginRequest struct {
@@ -212,6 +220,7 @@ func (x *LoginRequest) GetAppId() int64 {
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,6 +260,13 @@ func (x *LoginResponse) GetJwtToken() string {
 		return x.JwtToken
 	}
 	return ""
+}
+
+func (x *LoginResponse) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
 }
 
 type GetUserDataRequest struct {
@@ -810,15 +826,17 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\asurname\x18\x05 \x01(\tR\asurname\x12\x1e\n" +
 	"\n" +
 	"patronymic\x18\x06 \x01(\tR\n" +
-	"patronymic\"/\n" +
+	"patronymic\"A\n" +
 	"\x10RegisterResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"W\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\"W\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x15\n" +
-	"\x06app_id\x18\x03 \x01(\x03R\x05appId\",\n" +
+	"\x06app_id\x18\x03 \x01(\x03R\x05appId\">\n" +
 	"\rLoginResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"1\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\"1\n" +
 	"\x12GetUserDataRequest\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"\xab\x01\n" +
 	"\x13GetUserDataResponse\x12\x14\n" +
