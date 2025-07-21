@@ -609,7 +609,7 @@ type ChangeUserEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	NewEmail      string                 `protobuf:"bytes,3,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -658,9 +658,9 @@ func (x *ChangeUserEmailRequest) GetPassword() string {
 	return ""
 }
 
-func (x *ChangeUserEmailRequest) GetNewLogin() string {
+func (x *ChangeUserEmailRequest) GetNewEmail() string {
 	if x != nil {
-		return x.NewLogin
+		return x.NewEmail
 	}
 	return ""
 }
@@ -879,7 +879,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x16ChangeUserEmailRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
-	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"6\n" +
+	"\tnew_email\x18\x03 \x01(\tR\bnewEmail\"6\n" +
 	"\x17ChangeUserEmailResponse\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"\xab\x01\n" +
 	"\x14ChangeUserNSPRequest\x12\x14\n" +
