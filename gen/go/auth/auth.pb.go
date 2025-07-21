@@ -713,7 +713,9 @@ type ChangeUserNSPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	NewName       string                 `protobuf:"bytes,3,opt,name=new_name,json=newName,proto3" json:"new_name,omitempty"`
+	NewSurname    string                 `protobuf:"bytes,4,opt,name=new_surname,json=newSurname,proto3" json:"new_surname,omitempty"`
+	NewPatronymic string                 `protobuf:"bytes,5,opt,name=new_patronymic,json=newPatronymic,proto3" json:"new_patronymic,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -762,9 +764,23 @@ func (x *ChangeUserNSPRequest) GetPassword() string {
 	return ""
 }
 
-func (x *ChangeUserNSPRequest) GetNewLogin() string {
+func (x *ChangeUserNSPRequest) GetNewName() string {
 	if x != nil {
-		return x.NewLogin
+		return x.NewName
+	}
+	return ""
+}
+
+func (x *ChangeUserNSPRequest) GetNewSurname() string {
+	if x != nil {
+		return x.NewSurname
+	}
+	return ""
+}
+
+func (x *ChangeUserNSPRequest) GetNewPatronymic() string {
+	if x != nil {
+		return x.NewPatronymic
 	}
 	return ""
 }
@@ -865,11 +881,14 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
 	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"6\n" +
 	"\x17ChangeUserEmailResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"e\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"\xab\x01\n" +
 	"\x14ChangeUserNSPRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
-	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"4\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x19\n" +
+	"\bnew_name\x18\x03 \x01(\tR\anewName\x12\x1f\n" +
+	"\vnew_surname\x18\x04 \x01(\tR\n" +
+	"newSurname\x12%\n" +
+	"\x0enew_patronymic\x18\x05 \x01(\tR\rnewPatronymic\"4\n" +
 	"\x15ChangeUserNSPResponse\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken2\xa0\x04\n" +
 	"\x04Auth\x12?\n" +
