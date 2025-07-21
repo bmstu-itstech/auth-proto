@@ -871,14 +871,15 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
 	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"4\n" +
 	"\x15ChangeUserNSPResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken2\xd4\x03\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken2\xa0\x04\n" +
 	"\x04Auth\x12?\n" +
 	"\bRegister\x12\x18.auth.v2.RegisterRequest\x1a\x19.auth.v2.RegisterResponse\x126\n" +
 	"\x05Login\x12\x15.auth.v2.LoginRequest\x1a\x16.auth.v2.LoginResponse\x12H\n" +
 	"\vGetUserData\x12\x1b.auth.v2.GetUserDataRequest\x1a\x1c.auth.v2.GetUserDataResponse\x12]\n" +
 	"\x12ChangeUserPassword\x12\".auth.v2.ChangeUserPasswordRequest\x1a#.auth.v2.ChangeUserPasswordResponse\x12T\n" +
 	"\x0fChangeUserLogin\x12\x1f.auth.v2.ChangeUserLoginRequest\x1a .auth.v2.ChangeUserLoginResponse\x12T\n" +
-	"\x0fChangeUserEmail\x12\x1f.auth.v2.ChangeUserEmailRequest\x1a .auth.v2.ChangeUserEmailResponseB\x18Z\x16itstech/auth/v2;authv2b\x06proto3"
+	"\x0fChangeUserEmail\x12\x1f.auth.v2.ChangeUserEmailRequest\x1a .auth.v2.ChangeUserEmailResponse\x12J\n" +
+	"\tChangeNSP\x12\x1d.auth.v2.ChangeUserNSPRequest\x1a\x1e.auth.v2.ChangeUserNSPResponseB\x18Z\x16itstech/auth/v2;authv2b\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -916,14 +917,16 @@ var file_auth_auth_proto_depIdxs = []int32{
 	6,  // 3: auth.v2.Auth.ChangeUserPassword:input_type -> auth.v2.ChangeUserPasswordRequest
 	8,  // 4: auth.v2.Auth.ChangeUserLogin:input_type -> auth.v2.ChangeUserLoginRequest
 	10, // 5: auth.v2.Auth.ChangeUserEmail:input_type -> auth.v2.ChangeUserEmailRequest
-	1,  // 6: auth.v2.Auth.Register:output_type -> auth.v2.RegisterResponse
-	3,  // 7: auth.v2.Auth.Login:output_type -> auth.v2.LoginResponse
-	5,  // 8: auth.v2.Auth.GetUserData:output_type -> auth.v2.GetUserDataResponse
-	7,  // 9: auth.v2.Auth.ChangeUserPassword:output_type -> auth.v2.ChangeUserPasswordResponse
-	9,  // 10: auth.v2.Auth.ChangeUserLogin:output_type -> auth.v2.ChangeUserLoginResponse
-	11, // 11: auth.v2.Auth.ChangeUserEmail:output_type -> auth.v2.ChangeUserEmailResponse
-	6,  // [6:12] is the sub-list for method output_type
-	0,  // [0:6] is the sub-list for method input_type
+	12, // 6: auth.v2.Auth.ChangeNSP:input_type -> auth.v2.ChangeUserNSPRequest
+	1,  // 7: auth.v2.Auth.Register:output_type -> auth.v2.RegisterResponse
+	3,  // 8: auth.v2.Auth.Login:output_type -> auth.v2.LoginResponse
+	5,  // 9: auth.v2.Auth.GetUserData:output_type -> auth.v2.GetUserDataResponse
+	7,  // 10: auth.v2.Auth.ChangeUserPassword:output_type -> auth.v2.ChangeUserPasswordResponse
+	9,  // 11: auth.v2.Auth.ChangeUserLogin:output_type -> auth.v2.ChangeUserLoginResponse
+	11, // 12: auth.v2.Auth.ChangeUserEmail:output_type -> auth.v2.ChangeUserEmailResponse
+	13, // 13: auth.v2.Auth.ChangeNSP:output_type -> auth.v2.ChangeUserNSPResponse
+	7,  // [7:14] is the sub-list for method output_type
+	0,  // [0:7] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

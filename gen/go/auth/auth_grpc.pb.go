@@ -25,6 +25,7 @@ const (
 	Auth_ChangeUserPassword_FullMethodName = "/auth.v2.Auth/ChangeUserPassword"
 	Auth_ChangeUserLogin_FullMethodName    = "/auth.v2.Auth/ChangeUserLogin"
 	Auth_ChangeUserEmail_FullMethodName    = "/auth.v2.Auth/ChangeUserEmail"
+	Auth_ChangeNSP_FullMethodName          = "/auth.v2.Auth/ChangeNSP"
 )
 
 // AuthClient is the client API for Auth service.
@@ -37,6 +38,7 @@ type AuthClient interface {
 	ChangeUserPassword(ctx context.Context, in *ChangeUserPasswordRequest, opts ...grpc.CallOption) (*ChangeUserPasswordResponse, error)
 	ChangeUserLogin(ctx context.Context, in *ChangeUserLoginRequest, opts ...grpc.CallOption) (*ChangeUserLoginResponse, error)
 	ChangeUserEmail(ctx context.Context, in *ChangeUserEmailRequest, opts ...grpc.CallOption) (*ChangeUserEmailResponse, error)
+	ChangeNSP(ctx context.Context, in *ChangeUserNSPRequest, opts ...grpc.CallOption) (*ChangeUserNSPResponse, error)
 }
 
 type authClient struct {
@@ -107,6 +109,16 @@ func (c *authClient) ChangeUserEmail(ctx context.Context, in *ChangeUserEmailReq
 	return out, nil
 }
 
+func (c *authClient) ChangeNSP(ctx context.Context, in *ChangeUserNSPRequest, opts ...grpc.CallOption) (*ChangeUserNSPResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserNSPResponse)
+	err := c.cc.Invoke(ctx, Auth_ChangeNSP_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type AuthServer interface {
 	ChangeUserPassword(context.Context, *ChangeUserPasswordRequest) (*ChangeUserPasswordResponse, error)
 	ChangeUserLogin(context.Context, *ChangeUserLoginRequest) (*ChangeUserLoginResponse, error)
 	ChangeUserEmail(context.Context, *ChangeUserEmailRequest) (*ChangeUserEmailResponse, error)
+	ChangeNSP(context.Context, *ChangeUserNSPRequest) (*ChangeUserNSPResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedAuthServer) ChangeUserLogin(context.Context, *ChangeUserLogin
 }
 func (UnimplementedAuthServer) ChangeUserEmail(context.Context, *ChangeUserEmailRequest) (*ChangeUserEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserEmail not implemented")
+}
+func (UnimplementedAuthServer) ChangeNSP(context.Context, *ChangeUserNSPRequest) (*ChangeUserNSPResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeNSP not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -274,6 +290,24 @@ func _Auth_ChangeUserEmail_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_ChangeNSP_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserNSPRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ChangeNSP(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ChangeNSP_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ChangeNSP(ctx, req.(*ChangeUserNSPRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangeUserEmail",
 			Handler:    _Auth_ChangeUserEmail_Handler,
+		},
+		{
+			MethodName: "ChangeNSP",
+			Handler:    _Auth_ChangeNSP_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

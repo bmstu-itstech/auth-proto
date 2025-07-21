@@ -11,6 +11,7 @@ service Auth {
   rpc ChangeUserPassword (ChangeUserPasswordRequest) returns (ChangeUserPasswordResponse);
   rpc ChangeUserLogin (ChangeUserLoginRequest) returns (ChangeUserLoginResponse);
   rpc ChangeUserEmail (ChangeUserEmailRequest) returns (ChangeUserEmailResponse);
+  rpc ChangeNSP (ChangeUserNSPRequest) returns (ChangeUserNSPResponse);
 }
 
 message RegisterRequest {
