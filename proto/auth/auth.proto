@@ -85,7 +85,9 @@ message ChangeUserEmailResponse {
 message ChangeUserNSPRequest {
   string login = 1;
   string password = 2;
-  string new_login = 3;
+  string new_name = 3;
+  string new_surname = 4;
+  string new_patronymic = 5;
 }
 
 message ChangeUserNSPResponse {
