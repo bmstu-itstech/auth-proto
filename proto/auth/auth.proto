@@ -24,7 +24,7 @@ message User {
   string name = 4;
   string surname = 5;
   string patronymic = 6;
-  string isAdmin = 7;
+  bool isAdmin = 7;
 }
 
 // регистрация пользователя

@@ -28,7 +28,7 @@ type User struct {
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,5,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    string                 `protobuf:"bytes,6,opt,name=patronymic,proto3" json:"patronymic,omitempty"`
-	IsAdmin       string                 `protobuf:"bytes,7,opt,name=isAdmin,proto3" json:"isAdmin,omitempty"`
+	IsAdmin       bool                   `protobuf:"varint,7,opt,name=isAdmin,proto3" json:"isAdmin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -98,11 +98,11 @@ func (x *User) GetPatronymic() string {
 	return ""
 }
 
-func (x *User) GetIsAdmin() string {
+func (x *User) GetIsAdmin() bool {
 	if x != nil {
 		return x.IsAdmin
 	}
-	return ""
+	return false
 }
 
 // регистрация пользователя
@@ -1321,7 +1321,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
 	"patronymic\x18\x06 \x01(\tR\n" +
 	"patronymic\x12\x18\n" +
-	"\aisAdmin\x18\a \x01(\tR\aisAdmin\"\xa7\x01\n" +
+	"\aisAdmin\x18\a \x01(\bR\aisAdmin\"\xa7\x01\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x14\n" +
