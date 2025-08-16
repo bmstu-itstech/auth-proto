@@ -1174,6 +1174,7 @@ type ChangeUserDataByAdminRequest struct {
 	Name          string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,7,opt,name=surname,proto3" json:"surname,omitempty"`
 	Patronymic    string                 `protobuf:"bytes,8,opt,name=patronymic,proto3" json:"patronymic,omitempty"`
+	IsAdmin       bool                   `protobuf:"varint,9,opt,name=isAdmin,proto3" json:"isAdmin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1262,6 +1263,13 @@ func (x *ChangeUserDataByAdminRequest) GetPatronymic() string {
 		return x.Patronymic
 	}
 	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetIsAdmin() bool {
+	if x != nil {
+		return x.IsAdmin
+	}
+	return false
 }
 
 type ChangeUserDataByAdminResponse struct {
@@ -1387,7 +1395,7 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\x03R\x03uid\"?\n" +
 	"\x1aGetUserDataByAdminResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.auth.v2.UserR\x04user\"\xe3\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\r.auth.v2.UserR\x04user\"\xfd\x01\n" +
 	"\x1cChangeUserDataByAdminRequest\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\x03R\x03uid\x12\x14\n" +
@@ -1398,7 +1406,8 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\asurname\x18\a \x01(\tR\asurname\x12\x1e\n" +
 	"\n" +
 	"patronymic\x18\b \x01(\tR\n" +
-	"patronymic\"/\n" +
+	"patronymic\x12\x18\n" +
+	"\aisAdmin\x18\t \x01(\bR\aisAdmin\"/\n" +
 	"\x1dChangeUserDataByAdminResponse\x12\x0e\n" +
 	"\x02OK\x18\x01 \x01(\bR\x02OK2\x8d\a\n" +
 	"\x04Auth\x12?\n" +

@@ -148,6 +148,7 @@ message ChangeUserDataByAdminRequest {
   string name = 6;
   string surname = 7;
   string patronymic = 8;
+  bool isAdmin = 9;
 }
 
 message ChangeUserDataByAdminResponse {
