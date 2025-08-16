@@ -21,6 +21,99 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type User struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Surname       string                 `protobuf:"bytes,5,opt,name=surname,proto3" json:"surname,omitempty"`
+	Patronymic    string                 `protobuf:"bytes,6,opt,name=patronymic,proto3" json:"patronymic,omitempty"`
+	IsAdmin       string                 `protobuf:"bytes,7,opt,name=isAdmin,proto3" json:"isAdmin,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *User) Reset() {
+	*x = User{}
+	mi := &file_auth_auth_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *User) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User) ProtoMessage() {}
+
+func (x *User) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *User) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *User) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *User) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *User) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *User) GetSurname() string {
+	if x != nil {
+		return x.Surname
+	}
+	return ""
+}
+
+func (x *User) GetPatronymic() string {
+	if x != nil {
+		return x.Patronymic
+	}
+	return ""
+}
+
+func (x *User) GetIsAdmin() string {
+	if x != nil {
+		return x.IsAdmin
+	}
+	return ""
+}
+
+// регистрация пользователя
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
@@ -35,7 +128,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_auth_auth_proto_msgTypes[0]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +140,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[0]
+	mi := &file_auth_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +153,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{0}
+	return file_auth_auth_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RegisterRequest) GetLogin() string {
@@ -115,7 +208,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_auth_auth_proto_msgTypes[1]
+	mi := &file_auth_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -127,7 +220,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[1]
+	mi := &file_auth_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -140,7 +233,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{1}
+	return file_auth_auth_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RegisterResponse) GetJwtToken() string {
@@ -157,6 +250,7 @@ func (x *RegisterResponse) GetUid() int64 {
 	return 0
 }
 
+// аутентификация пользователя
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
@@ -167,7 +261,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_auth_auth_proto_msgTypes[2]
+	mi := &file_auth_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -179,7 +273,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[2]
+	mi := &file_auth_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -192,7 +286,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{2}
+	return file_auth_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LoginRequest) GetLogin() string {
@@ -219,7 +313,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -231,7 +325,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +338,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{3}
+	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginResponse) GetJwtToken() string {
@@ -261,6 +355,7 @@ func (x *LoginResponse) GetUid() int64 {
 	return 0
 }
 
+// данные пользователя о себе
 type GetUserDataRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
@@ -270,7 +365,7 @@ type GetUserDataRequest struct {
 
 func (x *GetUserDataRequest) Reset() {
 	*x = GetUserDataRequest{}
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -282,7 +377,7 @@ func (x *GetUserDataRequest) String() string {
 func (*GetUserDataRequest) ProtoMessage() {}
 
 func (x *GetUserDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -295,7 +390,7 @@ func (x *GetUserDataRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserDataRequest.ProtoReflect.Descriptor instead.
 func (*GetUserDataRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{4}
+	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetUserDataRequest) GetJwtToken() string {
@@ -319,7 +414,7 @@ type GetUserDataResponse struct {
 
 func (x *GetUserDataResponse) Reset() {
 	*x = GetUserDataResponse{}
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -331,7 +426,7 @@ func (x *GetUserDataResponse) String() string {
 func (*GetUserDataResponse) ProtoMessage() {}
 
 func (x *GetUserDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -344,7 +439,7 @@ func (x *GetUserDataResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserDataResponse.ProtoReflect.Descriptor instead.
 func (*GetUserDataResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{5}
+	return file_auth_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetUserDataResponse) GetLogin() string {
@@ -389,18 +484,18 @@ func (x *GetUserDataResponse) GetPatronymic() string {
 	return ""
 }
 
+// изменить данные пользователя о себе
 type ChangeUserPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewPassword   string                 `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeUserPasswordRequest) Reset() {
 	*x = ChangeUserPasswordRequest{}
-	mi := &file_auth_auth_proto_msgTypes[6]
+	mi := &file_auth_auth_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -412,7 +507,7 @@ func (x *ChangeUserPasswordRequest) String() string {
 func (*ChangeUserPasswordRequest) ProtoMessage() {}
 
 func (x *ChangeUserPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[6]
+	mi := &file_auth_auth_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -425,19 +520,12 @@ func (x *ChangeUserPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{6}
+	return file_auth_auth_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ChangeUserPasswordRequest) GetLogin() string {
+func (x *ChangeUserPasswordRequest) GetJwtToken() string {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *ChangeUserPasswordRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
+		return x.JwtToken
 	}
 	return ""
 }
@@ -458,7 +546,7 @@ type ChangeUserPasswordResponse struct {
 
 func (x *ChangeUserPasswordResponse) Reset() {
 	*x = ChangeUserPasswordResponse{}
-	mi := &file_auth_auth_proto_msgTypes[7]
+	mi := &file_auth_auth_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -470,7 +558,7 @@ func (x *ChangeUserPasswordResponse) String() string {
 func (*ChangeUserPasswordResponse) ProtoMessage() {}
 
 func (x *ChangeUserPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[7]
+	mi := &file_auth_auth_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -483,7 +571,7 @@ func (x *ChangeUserPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserPasswordResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{7}
+	return file_auth_auth_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ChangeUserPasswordResponse) GetJwtToken() string {
@@ -493,18 +581,18 @@ func (x *ChangeUserPasswordResponse) GetJwtToken() string {
 	return ""
 }
 
+// изменить данные пользователя о себе
 type ChangeUserLoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewLogin      string                 `protobuf:"bytes,3,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	NewLogin      string                 `protobuf:"bytes,2,opt,name=new_login,json=newLogin,proto3" json:"new_login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeUserLoginRequest) Reset() {
 	*x = ChangeUserLoginRequest{}
-	mi := &file_auth_auth_proto_msgTypes[8]
+	mi := &file_auth_auth_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -516,7 +604,7 @@ func (x *ChangeUserLoginRequest) String() string {
 func (*ChangeUserLoginRequest) ProtoMessage() {}
 
 func (x *ChangeUserLoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[8]
+	mi := &file_auth_auth_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -529,19 +617,12 @@ func (x *ChangeUserLoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserLoginRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserLoginRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{8}
+	return file_auth_auth_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *ChangeUserLoginRequest) GetLogin() string {
+func (x *ChangeUserLoginRequest) GetJwtToken() string {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *ChangeUserLoginRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
+		return x.JwtToken
 	}
 	return ""
 }
@@ -562,7 +643,7 @@ type ChangeUserLoginResponse struct {
 
 func (x *ChangeUserLoginResponse) Reset() {
 	*x = ChangeUserLoginResponse{}
-	mi := &file_auth_auth_proto_msgTypes[9]
+	mi := &file_auth_auth_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -574,7 +655,7 @@ func (x *ChangeUserLoginResponse) String() string {
 func (*ChangeUserLoginResponse) ProtoMessage() {}
 
 func (x *ChangeUserLoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[9]
+	mi := &file_auth_auth_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -587,7 +668,7 @@ func (x *ChangeUserLoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserLoginResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserLoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{9}
+	return file_auth_auth_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ChangeUserLoginResponse) GetJwtToken() string {
@@ -597,18 +678,18 @@ func (x *ChangeUserLoginResponse) GetJwtToken() string {
 	return ""
 }
 
+// изменить данные пользователя о себе
 type ChangeUserEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewEmail      string                 `protobuf:"bytes,3,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	NewEmail      string                 `protobuf:"bytes,2,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeUserEmailRequest) Reset() {
 	*x = ChangeUserEmailRequest{}
-	mi := &file_auth_auth_proto_msgTypes[10]
+	mi := &file_auth_auth_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -620,7 +701,7 @@ func (x *ChangeUserEmailRequest) String() string {
 func (*ChangeUserEmailRequest) ProtoMessage() {}
 
 func (x *ChangeUserEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[10]
+	mi := &file_auth_auth_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -633,19 +714,12 @@ func (x *ChangeUserEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserEmailRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserEmailRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{10}
+	return file_auth_auth_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ChangeUserEmailRequest) GetLogin() string {
+func (x *ChangeUserEmailRequest) GetJwtToken() string {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *ChangeUserEmailRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
+		return x.JwtToken
 	}
 	return ""
 }
@@ -666,7 +740,7 @@ type ChangeUserEmailResponse struct {
 
 func (x *ChangeUserEmailResponse) Reset() {
 	*x = ChangeUserEmailResponse{}
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -678,7 +752,7 @@ func (x *ChangeUserEmailResponse) String() string {
 func (*ChangeUserEmailResponse) ProtoMessage() {}
 
 func (x *ChangeUserEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[11]
+	mi := &file_auth_auth_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -691,7 +765,7 @@ func (x *ChangeUserEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserEmailResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserEmailResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{11}
+	return file_auth_auth_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ChangeUserEmailResponse) GetJwtToken() string {
@@ -701,20 +775,20 @@ func (x *ChangeUserEmailResponse) GetJwtToken() string {
 	return ""
 }
 
+// изменить данные пользователя о себе
 type ChangeUserNSPRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	NewName       string                 `protobuf:"bytes,3,opt,name=new_name,json=newName,proto3" json:"new_name,omitempty"`
-	NewSurname    string                 `protobuf:"bytes,4,opt,name=new_surname,json=newSurname,proto3" json:"new_surname,omitempty"`
-	NewPatronymic string                 `protobuf:"bytes,5,opt,name=new_patronymic,json=newPatronymic,proto3" json:"new_patronymic,omitempty"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	NewName       string                 `protobuf:"bytes,2,opt,name=new_name,json=newName,proto3" json:"new_name,omitempty"`
+	NewSurname    string                 `protobuf:"bytes,3,opt,name=new_surname,json=newSurname,proto3" json:"new_surname,omitempty"`
+	NewPatronymic string                 `protobuf:"bytes,4,opt,name=new_patronymic,json=newPatronymic,proto3" json:"new_patronymic,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeUserNSPRequest) Reset() {
 	*x = ChangeUserNSPRequest{}
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -726,7 +800,7 @@ func (x *ChangeUserNSPRequest) String() string {
 func (*ChangeUserNSPRequest) ProtoMessage() {}
 
 func (x *ChangeUserNSPRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[12]
+	mi := &file_auth_auth_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -739,19 +813,12 @@ func (x *ChangeUserNSPRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserNSPRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUserNSPRequest) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{12}
+	return file_auth_auth_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *ChangeUserNSPRequest) GetLogin() string {
+func (x *ChangeUserNSPRequest) GetJwtToken() string {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *ChangeUserNSPRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
+		return x.JwtToken
 	}
 	return ""
 }
@@ -786,7 +853,7 @@ type ChangeUserNSPResponse struct {
 
 func (x *ChangeUserNSPResponse) Reset() {
 	*x = ChangeUserNSPResponse{}
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -798,7 +865,7 @@ func (x *ChangeUserNSPResponse) String() string {
 func (*ChangeUserNSPResponse) ProtoMessage() {}
 
 func (x *ChangeUserNSPResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[13]
+	mi := &file_auth_auth_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -811,7 +878,7 @@ func (x *ChangeUserNSPResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUserNSPResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUserNSPResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{13}
+	return file_auth_auth_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ChangeUserNSPResponse) GetJwtToken() string {
@@ -821,11 +888,449 @@ func (x *ChangeUserNSPResponse) GetJwtToken() string {
 	return ""
 }
 
+// удалить пользователя (admin)
+type DeleteUserByAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserByAdminRequest) Reset() {
+	*x = DeleteUserByAdminRequest{}
+	mi := &file_auth_auth_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserByAdminRequest) ProtoMessage() {}
+
+func (x *DeleteUserByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserByAdminRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DeleteUserByAdminRequest) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+func (x *DeleteUserByAdminRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+type DeleteUserByAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OK            bool                   `protobuf:"varint,1,opt,name=OK,proto3" json:"OK,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserByAdminResponse) Reset() {
+	*x = DeleteUserByAdminResponse{}
+	mi := &file_auth_auth_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserByAdminResponse) ProtoMessage() {}
+
+func (x *DeleteUserByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserByAdminResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DeleteUserByAdminResponse) GetOK() bool {
+	if x != nil {
+		return x.OK
+	}
+	return false
+}
+
+// все пользователи (admin)
+type GetAllUsersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersRequest) Reset() {
+	*x = GetAllUsersRequest{}
+	mi := &file_auth_auth_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersRequest) ProtoMessage() {}
+
+func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetAllUsersRequest) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+type GetAllUsersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersResponse) Reset() {
+	*x = GetAllUsersResponse{}
+	mi := &file_auth_auth_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersResponse) ProtoMessage() {}
+
+func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetAllUsersResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// данные о пользователе по ID (admin)
+type GetUserDataByAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserDataByAdminRequest) Reset() {
+	*x = GetUserDataByAdminRequest{}
+	mi := &file_auth_auth_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserDataByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserDataByAdminRequest) ProtoMessage() {}
+
+func (x *GetUserDataByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserDataByAdminRequest.ProtoReflect.Descriptor instead.
+func (*GetUserDataByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetUserDataByAdminRequest) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+func (x *GetUserDataByAdminRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+type GetUserDataByAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserDataByAdminResponse) Reset() {
+	*x = GetUserDataByAdminResponse{}
+	mi := &file_auth_auth_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserDataByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserDataByAdminResponse) ProtoMessage() {}
+
+func (x *GetUserDataByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserDataByAdminResponse.ProtoReflect.Descriptor instead.
+func (*GetUserDataByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetUserDataByAdminResponse) GetUsers() []*User {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+// изменить данные пользователя (admin)
+type ChangeUserDataByAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	JwtToken      string                 `protobuf:"bytes,1,opt,name=jwt_token,json=jwtToken,proto3" json:"jwt_token,omitempty"`
+	Uid           int64                  `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Login         string                 `protobuf:"bytes,3,opt,name=login,proto3" json:"login,omitempty"`
+	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Name          string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+	Surname       string                 `protobuf:"bytes,7,opt,name=surname,proto3" json:"surname,omitempty"`
+	Patronymic    string                 `protobuf:"bytes,8,opt,name=patronymic,proto3" json:"patronymic,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserDataByAdminRequest) Reset() {
+	*x = ChangeUserDataByAdminRequest{}
+	mi := &file_auth_auth_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserDataByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserDataByAdminRequest) ProtoMessage() {}
+
+func (x *ChangeUserDataByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserDataByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ChangeUserDataByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ChangeUserDataByAdminRequest) GetJwtToken() string {
+	if x != nil {
+		return x.JwtToken
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *ChangeUserDataByAdminRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetSurname() string {
+	if x != nil {
+		return x.Surname
+	}
+	return ""
+}
+
+func (x *ChangeUserDataByAdminRequest) GetPatronymic() string {
+	if x != nil {
+		return x.Patronymic
+	}
+	return ""
+}
+
+type ChangeUserDataByAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OK            bool                   `protobuf:"varint,1,opt,name=OK,proto3" json:"OK,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeUserDataByAdminResponse) Reset() {
+	*x = ChangeUserDataByAdminResponse{}
+	mi := &file_auth_auth_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeUserDataByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeUserDataByAdminResponse) ProtoMessage() {}
+
+func (x *ChangeUserDataByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeUserDataByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ChangeUserDataByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *ChangeUserDataByAdminResponse) GetOK() bool {
+	if x != nil {
+		return x.OK
+	}
+	return false
+}
+
 var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth/auth.proto\x12\aauth.v2\"\xa7\x01\n" +
+	"\x0fauth/auth.proto\x12\aauth.v2\"\xac\x01\n" +
+	"\x04User\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
+	"\x05login\x18\x02 \x01(\tR\x05login\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x12\x18\n" +
+	"\asurname\x18\x05 \x01(\tR\asurname\x12\x1e\n" +
+	"\n" +
+	"patronymic\x18\x06 \x01(\tR\n" +
+	"patronymic\x12\x18\n" +
+	"\aisAdmin\x18\a \x01(\tR\aisAdmin\"\xa7\x01\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x14\n" +
@@ -854,34 +1359,57 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\asurname\x18\x05 \x01(\tR\asurname\x12\x1e\n" +
 	"\n" +
 	"patronymic\x18\x06 \x01(\tR\n" +
-	"patronymic\"p\n" +
-	"\x19ChangeUserPasswordRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12!\n" +
-	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\"9\n" +
+	"patronymic\"[\n" +
+	"\x19ChangeUserPasswordRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12!\n" +
+	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"9\n" +
 	"\x1aChangeUserPasswordResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"g\n" +
-	"\x16ChangeUserLoginRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
-	"\tnew_login\x18\x03 \x01(\tR\bnewLogin\"6\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"R\n" +
+	"\x16ChangeUserLoginRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x1b\n" +
+	"\tnew_login\x18\x02 \x01(\tR\bnewLogin\"6\n" +
 	"\x17ChangeUserLoginResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"g\n" +
-	"\x16ChangeUserEmailRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1b\n" +
-	"\tnew_email\x18\x03 \x01(\tR\bnewEmail\"6\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"R\n" +
+	"\x16ChangeUserEmailRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x1b\n" +
+	"\tnew_email\x18\x02 \x01(\tR\bnewEmail\"6\n" +
 	"\x17ChangeUserEmailResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"\xab\x01\n" +
-	"\x14ChangeUserNSPRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x19\n" +
-	"\bnew_name\x18\x03 \x01(\tR\anewName\x12\x1f\n" +
-	"\vnew_surname\x18\x04 \x01(\tR\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"\x96\x01\n" +
+	"\x14ChangeUserNSPRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x19\n" +
+	"\bnew_name\x18\x02 \x01(\tR\anewName\x12\x1f\n" +
+	"\vnew_surname\x18\x03 \x01(\tR\n" +
 	"newSurname\x12%\n" +
-	"\x0enew_patronymic\x18\x05 \x01(\tR\rnewPatronymic\"4\n" +
+	"\x0enew_patronymic\x18\x04 \x01(\tR\rnewPatronymic\"4\n" +
 	"\x15ChangeUserNSPResponse\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken2\xa0\x04\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"I\n" +
+	"\x18DeleteUserByAdminRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\"+\n" +
+	"\x19DeleteUserByAdminResponse\x12\x0e\n" +
+	"\x02OK\x18\x01 \x01(\bR\x02OK\"1\n" +
+	"\x12GetAllUsersRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"8\n" +
+	"\x13GetAllUsersResponse\x12!\n" +
+	"\x04user\x18\x01 \x01(\v2\r.auth.v2.UserR\x04user\"J\n" +
+	"\x19GetUserDataByAdminRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\"A\n" +
+	"\x1aGetUserDataByAdminResponse\x12#\n" +
+	"\x05users\x18\x01 \x03(\v2\r.auth.v2.UserR\x05users\"\xe3\x01\n" +
+	"\x1cChangeUserDataByAdminRequest\x12\x1b\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\x12\x14\n" +
+	"\x05login\x18\x03 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12\x12\n" +
+	"\x04name\x18\x06 \x01(\tR\x04name\x12\x18\n" +
+	"\asurname\x18\a \x01(\tR\asurname\x12\x1e\n" +
+	"\n" +
+	"patronymic\x18\b \x01(\tR\n" +
+	"patronymic\"/\n" +
+	"\x1dChangeUserDataByAdminResponse\x12\x0e\n" +
+	"\x02OK\x18\x01 \x01(\bR\x02OK2\x8d\a\n" +
 	"\x04Auth\x12?\n" +
 	"\bRegister\x12\x18.auth.v2.RegisterRequest\x1a\x19.auth.v2.RegisterResponse\x126\n" +
 	"\x05Login\x12\x15.auth.v2.LoginRequest\x1a\x16.auth.v2.LoginResponse\x12H\n" +
@@ -889,7 +1417,11 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x12ChangeUserPassword\x12\".auth.v2.ChangeUserPasswordRequest\x1a#.auth.v2.ChangeUserPasswordResponse\x12T\n" +
 	"\x0fChangeUserLogin\x12\x1f.auth.v2.ChangeUserLoginRequest\x1a .auth.v2.ChangeUserLoginResponse\x12T\n" +
 	"\x0fChangeUserEmail\x12\x1f.auth.v2.ChangeUserEmailRequest\x1a .auth.v2.ChangeUserEmailResponse\x12J\n" +
-	"\tChangeNSP\x12\x1d.auth.v2.ChangeUserNSPRequest\x1a\x1e.auth.v2.ChangeUserNSPResponseB\x18Z\x16itstech/auth/v2;authv2b\x06proto3"
+	"\tChangeNSP\x12\x1d.auth.v2.ChangeUserNSPRequest\x1a\x1e.auth.v2.ChangeUserNSPResponse\x12f\n" +
+	"\x15ChangeUserDataByAdmin\x12%.auth.v2.ChangeUserDataByAdminRequest\x1a&.auth.v2.ChangeUserDataByAdminResponse\x12Z\n" +
+	"\x11DeleteUserByAdmin\x12!.auth.v2.DeleteUserByAdminRequest\x1a\".auth.v2.DeleteUserByAdminResponse\x12H\n" +
+	"\vGetAllUsers\x12\x1b.auth.v2.GetAllUsersRequest\x1a\x1c.auth.v2.GetAllUsersResponse\x12]\n" +
+	"\x12GetUserDataByAdmin\x12\".auth.v2.GetUserDataByAdminRequest\x1a#.auth.v2.GetUserDataByAdminResponseB\x18Z\x16itstech/auth/v2;authv2b\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
@@ -903,43 +1435,62 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_auth_auth_proto_goTypes = []any{
-	(*RegisterRequest)(nil),            // 0: auth.v2.RegisterRequest
-	(*RegisterResponse)(nil),           // 1: auth.v2.RegisterResponse
-	(*LoginRequest)(nil),               // 2: auth.v2.LoginRequest
-	(*LoginResponse)(nil),              // 3: auth.v2.LoginResponse
-	(*GetUserDataRequest)(nil),         // 4: auth.v2.GetUserDataRequest
-	(*GetUserDataResponse)(nil),        // 5: auth.v2.GetUserDataResponse
-	(*ChangeUserPasswordRequest)(nil),  // 6: auth.v2.ChangeUserPasswordRequest
-	(*ChangeUserPasswordResponse)(nil), // 7: auth.v2.ChangeUserPasswordResponse
-	(*ChangeUserLoginRequest)(nil),     // 8: auth.v2.ChangeUserLoginRequest
-	(*ChangeUserLoginResponse)(nil),    // 9: auth.v2.ChangeUserLoginResponse
-	(*ChangeUserEmailRequest)(nil),     // 10: auth.v2.ChangeUserEmailRequest
-	(*ChangeUserEmailResponse)(nil),    // 11: auth.v2.ChangeUserEmailResponse
-	(*ChangeUserNSPRequest)(nil),       // 12: auth.v2.ChangeUserNSPRequest
-	(*ChangeUserNSPResponse)(nil),      // 13: auth.v2.ChangeUserNSPResponse
+	(*User)(nil),                          // 0: auth.v2.User
+	(*RegisterRequest)(nil),               // 1: auth.v2.RegisterRequest
+	(*RegisterResponse)(nil),              // 2: auth.v2.RegisterResponse
+	(*LoginRequest)(nil),                  // 3: auth.v2.LoginRequest
+	(*LoginResponse)(nil),                 // 4: auth.v2.LoginResponse
+	(*GetUserDataRequest)(nil),            // 5: auth.v2.GetUserDataRequest
+	(*GetUserDataResponse)(nil),           // 6: auth.v2.GetUserDataResponse
+	(*ChangeUserPasswordRequest)(nil),     // 7: auth.v2.ChangeUserPasswordRequest
+	(*ChangeUserPasswordResponse)(nil),    // 8: auth.v2.ChangeUserPasswordResponse
+	(*ChangeUserLoginRequest)(nil),        // 9: auth.v2.ChangeUserLoginRequest
+	(*ChangeUserLoginResponse)(nil),       // 10: auth.v2.ChangeUserLoginResponse
+	(*ChangeUserEmailRequest)(nil),        // 11: auth.v2.ChangeUserEmailRequest
+	(*ChangeUserEmailResponse)(nil),       // 12: auth.v2.ChangeUserEmailResponse
+	(*ChangeUserNSPRequest)(nil),          // 13: auth.v2.ChangeUserNSPRequest
+	(*ChangeUserNSPResponse)(nil),         // 14: auth.v2.ChangeUserNSPResponse
+	(*DeleteUserByAdminRequest)(nil),      // 15: auth.v2.DeleteUserByAdminRequest
+	(*DeleteUserByAdminResponse)(nil),     // 16: auth.v2.DeleteUserByAdminResponse
+	(*GetAllUsersRequest)(nil),            // 17: auth.v2.GetAllUsersRequest
+	(*GetAllUsersResponse)(nil),           // 18: auth.v2.GetAllUsersResponse
+	(*GetUserDataByAdminRequest)(nil),     // 19: auth.v2.GetUserDataByAdminRequest
+	(*GetUserDataByAdminResponse)(nil),    // 20: auth.v2.GetUserDataByAdminResponse
+	(*ChangeUserDataByAdminRequest)(nil),  // 21: auth.v2.ChangeUserDataByAdminRequest
+	(*ChangeUserDataByAdminResponse)(nil), // 22: auth.v2.ChangeUserDataByAdminResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	0,  // 0: auth.v2.Auth.Register:input_type -> auth.v2.RegisterRequest
-	2,  // 1: auth.v2.Auth.Login:input_type -> auth.v2.LoginRequest
-	4,  // 2: auth.v2.Auth.GetUserData:input_type -> auth.v2.GetUserDataRequest
-	6,  // 3: auth.v2.Auth.ChangeUserPassword:input_type -> auth.v2.ChangeUserPasswordRequest
-	8,  // 4: auth.v2.Auth.ChangeUserLogin:input_type -> auth.v2.ChangeUserLoginRequest
-	10, // 5: auth.v2.Auth.ChangeUserEmail:input_type -> auth.v2.ChangeUserEmailRequest
-	12, // 6: auth.v2.Auth.ChangeNSP:input_type -> auth.v2.ChangeUserNSPRequest
-	1,  // 7: auth.v2.Auth.Register:output_type -> auth.v2.RegisterResponse
-	3,  // 8: auth.v2.Auth.Login:output_type -> auth.v2.LoginResponse
-	5,  // 9: auth.v2.Auth.GetUserData:output_type -> auth.v2.GetUserDataResponse
-	7,  // 10: auth.v2.Auth.ChangeUserPassword:output_type -> auth.v2.ChangeUserPasswordResponse
-	9,  // 11: auth.v2.Auth.ChangeUserLogin:output_type -> auth.v2.ChangeUserLoginResponse
-	11, // 12: auth.v2.Auth.ChangeUserEmail:output_type -> auth.v2.ChangeUserEmailResponse
-	13, // 13: auth.v2.Auth.ChangeNSP:output_type -> auth.v2.ChangeUserNSPResponse
-	7,  // [7:14] is the sub-list for method output_type
-	0,  // [0:7] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	0,  // 0: auth.v2.GetAllUsersResponse.user:type_name -> auth.v2.User
+	0,  // 1: auth.v2.GetUserDataByAdminResponse.users:type_name -> auth.v2.User
+	1,  // 2: auth.v2.Auth.Register:input_type -> auth.v2.RegisterRequest
+	3,  // 3: auth.v2.Auth.Login:input_type -> auth.v2.LoginRequest
+	5,  // 4: auth.v2.Auth.GetUserData:input_type -> auth.v2.GetUserDataRequest
+	7,  // 5: auth.v2.Auth.ChangeUserPassword:input_type -> auth.v2.ChangeUserPasswordRequest
+	9,  // 6: auth.v2.Auth.ChangeUserLogin:input_type -> auth.v2.ChangeUserLoginRequest
+	11, // 7: auth.v2.Auth.ChangeUserEmail:input_type -> auth.v2.ChangeUserEmailRequest
+	13, // 8: auth.v2.Auth.ChangeNSP:input_type -> auth.v2.ChangeUserNSPRequest
+	21, // 9: auth.v2.Auth.ChangeUserDataByAdmin:input_type -> auth.v2.ChangeUserDataByAdminRequest
+	15, // 10: auth.v2.Auth.DeleteUserByAdmin:input_type -> auth.v2.DeleteUserByAdminRequest
+	17, // 11: auth.v2.Auth.GetAllUsers:input_type -> auth.v2.GetAllUsersRequest
+	19, // 12: auth.v2.Auth.GetUserDataByAdmin:input_type -> auth.v2.GetUserDataByAdminRequest
+	2,  // 13: auth.v2.Auth.Register:output_type -> auth.v2.RegisterResponse
+	4,  // 14: auth.v2.Auth.Login:output_type -> auth.v2.LoginResponse
+	6,  // 15: auth.v2.Auth.GetUserData:output_type -> auth.v2.GetUserDataResponse
+	8,  // 16: auth.v2.Auth.ChangeUserPassword:output_type -> auth.v2.ChangeUserPasswordResponse
+	10, // 17: auth.v2.Auth.ChangeUserLogin:output_type -> auth.v2.ChangeUserLoginResponse
+	12, // 18: auth.v2.Auth.ChangeUserEmail:output_type -> auth.v2.ChangeUserEmailResponse
+	14, // 19: auth.v2.Auth.ChangeNSP:output_type -> auth.v2.ChangeUserNSPResponse
+	22, // 20: auth.v2.Auth.ChangeUserDataByAdmin:output_type -> auth.v2.ChangeUserDataByAdminResponse
+	16, // 21: auth.v2.Auth.DeleteUserByAdmin:output_type -> auth.v2.DeleteUserByAdminResponse
+	18, // 22: auth.v2.Auth.GetAllUsers:output_type -> auth.v2.GetAllUsersResponse
+	20, // 23: auth.v2.Auth.GetUserDataByAdmin:output_type -> auth.v2.GetUserDataByAdminResponse
+	13, // [13:24] is the sub-list for method output_type
+	2,  // [2:13] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -953,7 +1504,7 @@ func file_auth_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

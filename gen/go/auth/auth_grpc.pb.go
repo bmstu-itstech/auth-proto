@@ -19,13 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName           = "/auth.v2.Auth/Register"
-	Auth_Login_FullMethodName              = "/auth.v2.Auth/Login"
-	Auth_GetUserData_FullMethodName        = "/auth.v2.Auth/GetUserData"
-	Auth_ChangeUserPassword_FullMethodName = "/auth.v2.Auth/ChangeUserPassword"
-	Auth_ChangeUserLogin_FullMethodName    = "/auth.v2.Auth/ChangeUserLogin"
-	Auth_ChangeUserEmail_FullMethodName    = "/auth.v2.Auth/ChangeUserEmail"
-	Auth_ChangeNSP_FullMethodName          = "/auth.v2.Auth/ChangeNSP"
+	Auth_Register_FullMethodName              = "/auth.v2.Auth/Register"
+	Auth_Login_FullMethodName                 = "/auth.v2.Auth/Login"
+	Auth_GetUserData_FullMethodName           = "/auth.v2.Auth/GetUserData"
+	Auth_ChangeUserPassword_FullMethodName    = "/auth.v2.Auth/ChangeUserPassword"
+	Auth_ChangeUserLogin_FullMethodName       = "/auth.v2.Auth/ChangeUserLogin"
+	Auth_ChangeUserEmail_FullMethodName       = "/auth.v2.Auth/ChangeUserEmail"
+	Auth_ChangeNSP_FullMethodName             = "/auth.v2.Auth/ChangeNSP"
+	Auth_ChangeUserDataByAdmin_FullMethodName = "/auth.v2.Auth/ChangeUserDataByAdmin"
+	Auth_DeleteUserByAdmin_FullMethodName     = "/auth.v2.Auth/DeleteUserByAdmin"
+	Auth_GetAllUsers_FullMethodName           = "/auth.v2.Auth/GetAllUsers"
+	Auth_GetUserDataByAdmin_FullMethodName    = "/auth.v2.Auth/GetUserDataByAdmin"
 )
 
 // AuthClient is the client API for Auth service.
@@ -39,6 +43,10 @@ type AuthClient interface {
 	ChangeUserLogin(ctx context.Context, in *ChangeUserLoginRequest, opts ...grpc.CallOption) (*ChangeUserLoginResponse, error)
 	ChangeUserEmail(ctx context.Context, in *ChangeUserEmailRequest, opts ...grpc.CallOption) (*ChangeUserEmailResponse, error)
 	ChangeNSP(ctx context.Context, in *ChangeUserNSPRequest, opts ...grpc.CallOption) (*ChangeUserNSPResponse, error)
+	ChangeUserDataByAdmin(ctx context.Context, in *ChangeUserDataByAdminRequest, opts ...grpc.CallOption) (*ChangeUserDataByAdminResponse, error)
+	DeleteUserByAdmin(ctx context.Context, in *DeleteUserByAdminRequest, opts ...grpc.CallOption) (*DeleteUserByAdminResponse, error)
+	GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error)
+	GetUserDataByAdmin(ctx context.Context, in *GetUserDataByAdminRequest, opts ...grpc.CallOption) (*GetUserDataByAdminResponse, error)
 }
 
 type authClient struct {
@@ -119,6 +127,46 @@ func (c *authClient) ChangeNSP(ctx context.Context, in *ChangeUserNSPRequest, op
 	return out, nil
 }
 
+func (c *authClient) ChangeUserDataByAdmin(ctx context.Context, in *ChangeUserDataByAdminRequest, opts ...grpc.CallOption) (*ChangeUserDataByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeUserDataByAdminResponse)
+	err := c.cc.Invoke(ctx, Auth_ChangeUserDataByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) DeleteUserByAdmin(ctx context.Context, in *DeleteUserByAdminRequest, opts ...grpc.CallOption) (*DeleteUserByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserByAdminResponse)
+	err := c.cc.Invoke(ctx, Auth_DeleteUserByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) GetAllUsers(ctx context.Context, in *GetAllUsersRequest, opts ...grpc.CallOption) (*GetAllUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllUsersResponse)
+	err := c.cc.Invoke(ctx, Auth_GetAllUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) GetUserDataByAdmin(ctx context.Context, in *GetUserDataByAdminRequest, opts ...grpc.CallOption) (*GetUserDataByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserDataByAdminResponse)
+	err := c.cc.Invoke(ctx, Auth_GetUserDataByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
@@ -130,6 +178,10 @@ type AuthServer interface {
 	ChangeUserLogin(context.Context, *ChangeUserLoginRequest) (*ChangeUserLoginResponse, error)
 	ChangeUserEmail(context.Context, *ChangeUserEmailRequest) (*ChangeUserEmailResponse, error)
 	ChangeNSP(context.Context, *ChangeUserNSPRequest) (*ChangeUserNSPResponse, error)
+	ChangeUserDataByAdmin(context.Context, *ChangeUserDataByAdminRequest) (*ChangeUserDataByAdminResponse, error)
+	DeleteUserByAdmin(context.Context, *DeleteUserByAdminRequest) (*DeleteUserByAdminResponse, error)
+	GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error)
+	GetUserDataByAdmin(context.Context, *GetUserDataByAdminRequest) (*GetUserDataByAdminResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -160,6 +212,18 @@ func (UnimplementedAuthServer) ChangeUserEmail(context.Context, *ChangeUserEmail
 }
 func (UnimplementedAuthServer) ChangeNSP(context.Context, *ChangeUserNSPRequest) (*ChangeUserNSPResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeNSP not implemented")
+}
+func (UnimplementedAuthServer) ChangeUserDataByAdmin(context.Context, *ChangeUserDataByAdminRequest) (*ChangeUserDataByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeUserDataByAdmin not implemented")
+}
+func (UnimplementedAuthServer) DeleteUserByAdmin(context.Context, *DeleteUserByAdminRequest) (*DeleteUserByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserByAdmin not implemented")
+}
+func (UnimplementedAuthServer) GetAllUsers(context.Context, *GetAllUsersRequest) (*GetAllUsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
+}
+func (UnimplementedAuthServer) GetUserDataByAdmin(context.Context, *GetUserDataByAdminRequest) (*GetUserDataByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserDataByAdmin not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -308,6 +372,78 @@ func _Auth_ChangeNSP_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_ChangeUserDataByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeUserDataByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).ChangeUserDataByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_ChangeUserDataByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).ChangeUserDataByAdmin(ctx, req.(*ChangeUserDataByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_DeleteUserByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).DeleteUserByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_DeleteUserByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).DeleteUserByAdmin(ctx, req.(*DeleteUserByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_GetAllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GetAllUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GetAllUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GetAllUsers(ctx, req.(*GetAllUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_GetUserDataByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserDataByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GetUserDataByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GetUserDataByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GetUserDataByAdmin(ctx, req.(*GetUserDataByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +478,22 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangeNSP",
 			Handler:    _Auth_ChangeNSP_Handler,
+		},
+		{
+			MethodName: "ChangeUserDataByAdmin",
+			Handler:    _Auth_ChangeUserDataByAdmin_Handler,
+		},
+		{
+			MethodName: "DeleteUserByAdmin",
+			Handler:    _Auth_DeleteUserByAdmin_Handler,
+		},
+		{
+			MethodName: "GetAllUsers",
+			Handler:    _Auth_GetAllUsers_Handler,
+		},
+		{
+			MethodName: "GetUserDataByAdmin",
+			Handler:    _Auth_GetUserDataByAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
