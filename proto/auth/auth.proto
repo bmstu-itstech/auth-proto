@@ -12,8 +12,23 @@ service Auth {
   rpc ChangeUserLogin (ChangeUserLoginRequest) returns (ChangeUserLoginResponse);
   rpc ChangeUserEmail (ChangeUserEmailRequest) returns (ChangeUserEmailResponse);
   rpc ChangeNSP (ChangeUserNSPRequest) returns (ChangeUserNSPResponse);
+  rpc ChangeUserDataByAdmin (ChangeUserDataByAdminRequest) returns (ChangeUserDataByAdminResponse);
+  rpc DeleteUserByAdmin (DeleteUserByAdminRequest) returns (DeleteUserByAdminResponse);
+  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse);
+  rpc GetUserDataByAdmin (GetUserDataByAdminRequest) returns (GetUserDataByAdminResponse);
 }
 
+message User {
+  string uid = 1;
+  string login = 2;
+  string email = 3;
+  string name = 4;
+  string surname = 5;
+  string patronymic = 6;
+  string isAdmin = 7;
+}
+
+// регистрация пользователя
 message RegisterRequest {
   string login = 1;
   string password = 2;
@@ -28,6 +43,7 @@ message RegisterResponse {
   int64 uid = 2;
 }
 
+// аутентификация пользователя
 message LoginRequest {
   string login = 1;
   string password = 2;
@@ -38,6 +54,7 @@ message LoginResponse {
   int64 uid = 2;
 }
 
+// данные пользователя о себе
 message GetUserDataRequest {
   string jwt_token = 1;
 }
@@ -51,44 +68,89 @@ message GetUserDataResponse {
   string patronymic = 6;
 }
 
+// изменить данные пользователя о себе
 message ChangeUserPasswordRequest {
-  string login = 1;
-  string password = 2;
-  string new_password = 3;
+  string jwt_token = 1;
+  string new_password = 2;
 }
 
 message ChangeUserPasswordResponse {
   string jwt_token = 1;
 }
 
+// изменить данные пользователя о себе
 message ChangeUserLoginRequest {
-  string login = 1;
-  string password = 2;
-  string new_login = 3;
+  string jwt_token = 1;
+  string new_login = 2;
 }
 
 message ChangeUserLoginResponse {
   string jwt_token = 1;
 }
 
+// изменить данные пользователя о себе
 message ChangeUserEmailRequest {
-  string login = 1;
-  string password = 2;
-  string new_email = 3;
+  string jwt_token = 1;
+  string new_email = 2;
 }
 
 message ChangeUserEmailResponse {
   string jwt_token = 1;
 }
 
+// изменить данные пользователя о себе
 message ChangeUserNSPRequest {
-  string login = 1;
-  string password = 2;
-  string new_name = 3;
-  string new_surname = 4;
-  string new_patronymic = 5;
+  string jwt_token = 1;
+  string new_name = 2;
+  string new_surname = 3;
+  string new_patronymic = 4;
 }
 
 message ChangeUserNSPResponse {
   string jwt_token = 1;
+}
+
+// удалить пользователя (admin)
+message DeleteUserByAdminRequest {
+  string jwt_token = 1;
+  int64 uid = 2;
+}
+
+message DeleteUserByAdminResponse {
+  bool OK = 1;
+}
+
+// все пользователи (admin)
+message GetAllUsersRequest {
+  string jwt_token = 1;
+}
+
+message GetAllUsersResponse {
+  User user = 1;
+}
+
+// данные о пользователе по ID (admin)
+message GetUserDataByAdminRequest {
+  string jwt_token = 1;
+  int64 uid = 2;
+}
+
+message GetUserDataByAdminResponse {
+  repeated User users = 1;
+}
+
+// изменить данные пользователя (admin)
+message ChangeUserDataByAdminRequest {
+  string jwt_token = 1;
+  int64 uid = 2;
+  string login = 3;
+  string password = 4;
+  string email = 5;
+  string name = 6;
+  string surname = 7;
+  string patronymic = 8;
+}
+
+message ChangeUserDataByAdminResponse {
+  bool OK = 1;
 }
