@@ -1032,7 +1032,7 @@ func (x *GetAllUsersRequest) GetJwtToken() string {
 
 type GetAllUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1067,9 +1067,9 @@ func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *GetAllUsersResponse) GetUser() *User {
+func (x *GetAllUsersResponse) GetUsers() []*User {
 	if x != nil {
-		return x.User
+		return x.Users
 	}
 	return nil
 }
@@ -1129,7 +1129,7 @@ func (x *GetUserDataByAdminRequest) GetUid() int64 {
 
 type GetUserDataByAdminResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1164,9 +1164,9 @@ func (*GetUserDataByAdminResponse) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *GetUserDataByAdminResponse) GetUsers() []*User {
+func (x *GetUserDataByAdminResponse) GetUser() *User {
 	if x != nil {
-		return x.Users
+		return x.User
 	}
 	return nil
 }
@@ -1389,14 +1389,14 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x19DeleteUserByAdminResponse\x12\x0e\n" +
 	"\x02OK\x18\x01 \x01(\bR\x02OK\"1\n" +
 	"\x12GetAllUsersRequest\x12\x1b\n" +
-	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\"8\n" +
-	"\x13GetAllUsersResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.auth.v2.UserR\x04user\"J\n" +
+	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\":\n" +
+	"\x13GetAllUsersResponse\x12#\n" +
+	"\x05users\x18\x01 \x03(\v2\r.auth.v2.UserR\x05users\"J\n" +
 	"\x19GetUserDataByAdminRequest\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
-	"\x03uid\x18\x02 \x01(\x03R\x03uid\"A\n" +
-	"\x1aGetUserDataByAdminResponse\x12#\n" +
-	"\x05users\x18\x01 \x03(\v2\r.auth.v2.UserR\x05users\"\xe3\x01\n" +
+	"\x03uid\x18\x02 \x01(\x03R\x03uid\"?\n" +
+	"\x1aGetUserDataByAdminResponse\x12!\n" +
+	"\x04user\x18\x01 \x01(\v2\r.auth.v2.UserR\x04user\"\xe3\x01\n" +
 	"\x1cChangeUserDataByAdminRequest\x12\x1b\n" +
 	"\tjwt_token\x18\x01 \x01(\tR\bjwtToken\x12\x10\n" +
 	"\x03uid\x18\x02 \x01(\x03R\x03uid\x12\x14\n" +
@@ -1462,8 +1462,8 @@ var file_auth_auth_proto_goTypes = []any{
 	(*ChangeUserDataByAdminResponse)(nil), // 22: auth.v2.ChangeUserDataByAdminResponse
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	0,  // 0: auth.v2.GetAllUsersResponse.user:type_name -> auth.v2.User
-	0,  // 1: auth.v2.GetUserDataByAdminResponse.users:type_name -> auth.v2.User
+	0,  // 0: auth.v2.GetAllUsersResponse.users:type_name -> auth.v2.User
+	0,  // 1: auth.v2.GetUserDataByAdminResponse.user:type_name -> auth.v2.User
 	1,  // 2: auth.v2.Auth.Register:input_type -> auth.v2.RegisterRequest
 	3,  // 3: auth.v2.Auth.Login:input_type -> auth.v2.LoginRequest
 	5,  // 4: auth.v2.Auth.GetUserData:input_type -> auth.v2.GetUserDataRequest

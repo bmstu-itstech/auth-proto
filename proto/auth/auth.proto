@@ -126,7 +126,7 @@ message GetAllUsersRequest {
 }
 
 message GetAllUsersResponse {
-  User user = 1;
+  repeated User users = 1;
 }
 
 // данные о пользователе по ID (admin)
@@ -136,7 +136,7 @@ message GetUserDataByAdminRequest {
 }
 
 message GetUserDataByAdminResponse {
-  repeated User users = 1;
+  User user = 1;
 }
 
 // изменить данные пользователя (admin)
