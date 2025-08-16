@@ -23,8 +23,7 @@ const (
 
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
+	Uid           int64                  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Surname       string                 `protobuf:"bytes,5,opt,name=surname,proto3" json:"surname,omitempty"`
@@ -64,18 +63,11 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetUid() string {
+func (x *User) GetUid() int64 {
 	if x != nil {
 		return x.Uid
 	}
-	return ""
-}
-
-func (x *User) GetLogin() string {
-	if x != nil {
-		return x.Login
-	}
-	return ""
+	return 0
 }
 
 func (x *User) GetEmail() string {
@@ -1320,10 +1312,9 @@ var File_auth_auth_proto protoreflect.FileDescriptor
 
 const file_auth_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0fauth/auth.proto\x12\aauth.v2\"\xac\x01\n" +
+	"\x0fauth/auth.proto\x12\aauth.v2\"\x96\x01\n" +
 	"\x04User\x12\x10\n" +
-	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x14\n" +
-	"\x05login\x18\x02 \x01(\tR\x05login\x12\x14\n" +
+	"\x03uid\x18\x01 \x01(\x03R\x03uid\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x18\n" +
 	"\asurname\x18\x05 \x01(\tR\asurname\x12\x1e\n" +
